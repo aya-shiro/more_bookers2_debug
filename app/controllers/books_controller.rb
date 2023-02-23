@@ -19,8 +19,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @newbook = Book.new
     @book = Book.find(params[:id])
-    # @user = User.find(params[:id])
     # アソシエーションは右辺で2モデルを繋ぐ、左辺右辺で1モデルずつは×
     @user = @book.user
   end
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     redirect_to books_path
   end
 
