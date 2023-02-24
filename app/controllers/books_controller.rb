@@ -59,4 +59,9 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
+  # def favorite_params
+  #   params.require(:favorite).permit(:user_id, :book_id)
+  # end
+
 end
