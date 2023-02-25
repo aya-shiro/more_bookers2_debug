@@ -1,24 +1,24 @@
 class FavoritesController < ApplicationController
   def create
-    # user = User.find(params[:id])
-    @book = Book.find(params[:book_id])
-    # favorite = current_user.favorites.new(user_id: user.id)
-    favorite = current_user.favorites.new(user_id: current_user.id)
-
+    book = Book.find(params[:book_id])
+    # 外部キーbook_idに紐づいたbookテーブルの1レコードbook.idをもとにインスタンス生成し、いいねを作る
+    favorite = current_user.favorites.new(book_id: book.id)
     favorite.save
-    # いいねを押す前にいた画面をリダイレクト先に指定
-    redirect_to book_path(@book.id)
+
+    # redirect_backでこのアクションを使ったときの画面に戻る！
+    # 引数で指定しているroot_pathはredirect_backできなかったときの緊急避難先、root_pathが無難
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    # user = User.find(params[:id])
-    @book = Book.find(params[:book_id])
-    # favorite = current_user.favorites.new(user_id: user.id)
-    favorite = current_user.favorites.new(user_id: current_user.id)
+    book = Book.find(params[:book_id])
+    # createで作ったインスタンスをfind_byで取得してdestroyする
+    favorite = current_user.favorites.find_by(book_id: book.id)
+    favorite.destroy
 
-    favorite.save
-    # いいねを押す前にいた画面をリダイレクト先に指定
-    redirect_to book_path(@book.id)
+    # いいねを押す前にいた画面をリダイレクト先に
+    redirect_back(fallback_location: root_path)
+
   end
 
   private
