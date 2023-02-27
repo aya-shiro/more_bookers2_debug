@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
 
+    @relationships = Relationship.new
   end
 
   def index
