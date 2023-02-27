@@ -23,6 +23,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     # アソシエーションは右辺で2モデルを繋ぐ、左辺右辺で1モデルずつは×
     @user = @book.user
+
+    @book_comment = BookComment.new
   end
 
   def index
