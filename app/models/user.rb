@@ -8,13 +8,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
-  # has_many :テーブル名, class_name:モデル名
-  has_many :relationships, class_name: "relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :relationships, class_name: "relationship", foreign_key: "followed_id", dependent: :destroy
-
-  # has_many :yyy, through: :xxx, source: :zzz
-  has_many :followtables, through: :relationships, source: :users
-
+  # has_many :テーブル仮名, class_name:モデル名
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  
+  # has_many :テーブル仮名, through: :テーブル実名, source: :もらうデータのカラム名
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :relationships, source: :follower
 
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true

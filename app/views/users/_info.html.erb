@@ -10,11 +10,20 @@
   </tr>
 
   <tr>
-    <td>follows<%= user.relationship.follower_id.count %></td>
+    <td>follows<%= user.followings.count %></td>
   </tr>
   <tr>
-    <td>followed<%= user.relationship.followed_id.count %></td>
+    <td>followed<%= user.followers.count %></td>
   </tr>
+
+  <!--(他人のページ かつ 自分がフォローしている場合？)-->
+  <% if user.id != current_user.id && user.id == follower_id %>
+    <tr>
+      <td><%= link_to "フォロー外す", user_relationship_path(user.id), method: :delete, class: "btn btn-sm btn-info" %></td>
+  <% else %>
+      <td><%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-sm btn-success" %></td>
+    </tr>
+  <% end %>
 
 </table>
 
