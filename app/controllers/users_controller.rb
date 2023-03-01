@@ -33,23 +33,6 @@ class UsersController < ApplicationController
   end
 
 
-  # フォローしたときの処理
-  def follow(user_id)
-    # 引数で外部キーとOOを紐づける？
-    relationships.create(followed_id: user_id)
-  end
-  # フォローを外すときの処理
-  def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
-  end
-
-  # フォローしているか判定
-  def following?(user)
-    # (＝followedカラムが含まれているか？？)
-    followings.include?(user)
-  end
-
-
 
   private
 
