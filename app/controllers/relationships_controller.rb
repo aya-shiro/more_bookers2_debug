@@ -43,9 +43,9 @@ class RelationshipsController < ApplicationController
 
 
 
-  private
-  def relationship_params
-    params.requier(:relationship).permit(:follower_id, :followed_id)
-  end
+  # private
+  # def relationship_params
+  #   params.requier(:relationship).permit(:follower_id, :followed_id)
+  # end
 
 end
