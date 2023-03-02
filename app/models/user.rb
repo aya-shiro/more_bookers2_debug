@@ -34,6 +34,7 @@ class User < ApplicationRecord
   # フォローしたときの処理
   def follow(user_id)
     # 引数で外部キーとOOを紐づける？
+    
     relationships.create(followed_id: user_id)
   end
   # フォローを外すときの処理
