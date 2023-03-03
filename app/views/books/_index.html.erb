@@ -18,7 +18,7 @@
         <td><%= book.body %></td>
 
         <!--いいね機能の非同期通信のため_favorites/_favorite.html.erbに移動-->
-        <%= render 'favorites/favorite', obj: @book %>
+        <%= render partial: 'favorites/favorite-btn', book: @book %>
 
         <td>コメント数：<%= book.book_comments.count %></td>
 
