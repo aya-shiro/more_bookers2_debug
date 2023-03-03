@@ -1,9 +1,13 @@
 class SearchesController < ApplicationController
-  def search
-    # form_withで受け取ったモデル(＝選んだモデル)を@rangeに格納
-    @range = params[:range]
+  before_action :authenticate_user!
 
-    if @range == "User"
+  def search
+    # form_withで受け取ったモデル情報(User/Book)を格納
+    @model = params[:model]
+    @content = params[:content]
+    @word = params[:word]
+
+    if @model == "User"
       @users = User.looks(params[:search], params[:word])
     else
       @books = Book.looks(params[:search], params[:word])
