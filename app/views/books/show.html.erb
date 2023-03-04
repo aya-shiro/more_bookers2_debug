@@ -20,9 +20,9 @@
 
 
           <!--いいね機能の非同期通信のため_favorites/_favorite-btn.html.erbに移動-->
-          <div id="favorite-btn_<%= @book.id %>">
+          <td id="favorite-btn_<%= @book.id %>">
             <%= render 'favorites/favorite-btn', book: @book %>
-    　　　　</div>
+    　　　　</td>
 
 
           <% if @user == current_user %>
@@ -33,25 +33,15 @@
           <% end %>
         </tr>
 
-        <% @book.book_comments.each do |book_comment| %>
-        <tr>
-          <td><%= link_to(book_comment.user) do %>
-            <%= image_tag book_comment.user.get_profile_image(50, 50) %><br>
-            <%= book_comment.user.name %>
-            <% end %>
-          </td>
-          <td><%= book_comment.comment %></td>
-          <td>
-            <% if book_comment.user == current_user %>
-              <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
-            <% end %>
-          </td>
-        <% end %>
-        </tr>
       </table>
 
+      <table id='comment_index'>
+        <%= render 'book_comments/index', book: @book %>
+      </table>
+
+
       <!--コメントフォームを非同期通信のためbook_comments/_comment.html.erbに移動-->
-      <div id='comment_<%= @book.id %>'>
+      <div id='comment_form'>
         <%= render 'book_comments/comment', book: @book, book_comment: @book_comment %>
       </div>
 
