@@ -1,0 +1,12 @@
+<!--books/show.html.erbから持ってきて＠削除、local: false追記-->
+
+<div>
+  <%= form_with model: [@book, @book_comment], local: false do |f| %>
+    <div class="form_group" >
+      <%= f.text_area :comment, rows: "4", placeholder: "コメント入力" %>
+    </div>
+    <div class="form_group" >
+      <%= f.submit "送信", class: 'btn btn-info'%>
+    </div>
+  <% end %>
+</div>

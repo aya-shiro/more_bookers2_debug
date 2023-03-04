@@ -18,19 +18,13 @@
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
 
-          <% if @book.favorited_by?(current_user) %>
-            <td>
-              <%= link_to book_favorites_path(@book.id), method: :delete do %>
-                ♥<%= @book.favorites.count %>
-              <% end %>
-            </td>
-            <% else %>
-            <td>
-              <%= link_to book_favorites_path(@book.id), method: :post do %>
-                ♡<%= @book.favorites.count %>
-              <% end %>
-            </td>
-          <% end %>
+
+          <!--いいね機能の非同期通信のため_favorites/_favorite-btn.html.erbに移動-->
+          <div id="favorite-btn_<%= @book.id %>">
+            <%= render 'favorites/favorite-btn', book: @book %>
+    　　　　</div>
+
+
 
           <% if @user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
@@ -56,15 +50,9 @@
 
       </table>
 
-      <div>
-        <%= form_with model: [@book, @book_comment] do |f| %>
-          <div class="form_group" >
-            <%= f.text_area :comment, rows: "4", placeholder: "コメント入力" %>
-          </div>
-          <div class="form_group" >
-            <%= f.submit "送信", class: 'btn btn-info'%>
-          </div>
-        <% end %>
+      <!--コメントフォームを非同期通信のためbook_comments/_comment.html.erbに移動-->
+      <div id='comment_<%= @book.id %>'>
+        <%= render 'book_comments/comment', book: @book, book_comment: @book_comment %>
       </div>
 
     </div>

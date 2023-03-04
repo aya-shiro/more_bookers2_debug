@@ -17,8 +17,10 @@
         <td><%= link_to book.title, book_path(book.id) %></td>
         <td><%= book.body %></td>
 
-        <!--いいね機能の非同期通信のため_favorites/_favorite.html.erbに移動-->
-        <%= render partial: 'favorites/favorite-btn', book: @book %>
+        <!--いいね機能の非同期通信のため_favorites/_favorite-btn.html.erbに移動-->
+        <div id="favorite-btn_<%= @book.id %>">
+          <%= render 'favorites/favorite-btn', book: book %>
+　　　　</div>
 
         <td>コメント数：<%= book.book_comments.count %></td>
 

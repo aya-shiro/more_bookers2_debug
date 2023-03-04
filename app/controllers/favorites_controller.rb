@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
   def create
     @book = Book.find(params[:book_id])
-    book = Book.find(params[:book_id])
     # 外部キーbook_idに紐づいたbookテーブルの1レコードbook.idをもとにインスタンス生成し、いいねを作る
-    favorite = current_user.favorites.new(book_id: book.id)
+    favorite = current_user.favorites.new(book_id: @book.id)
     favorite.save
 
     # redirect_backでこのアクションを使ったときの画面に戻る！
@@ -14,9 +13,8 @@ class FavoritesController < ApplicationController
 
   def destroy
     @book = Book.find(params[:book_id])
-    book = Book.find(params[:book_id])
     # createで作ったインスタンスをfind_byで取得してdestroyする
-    favorite = current_user.favorites.find_by(book_id: book.id)
+    favorite = current_user.favorites.find_by(book_id: @book.id)
     favorite.destroy
 
     # いいねを押す前にいた画面をリダイレクト先に
