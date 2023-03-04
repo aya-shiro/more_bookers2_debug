@@ -29,6 +29,7 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
+    # @book = Book(params[:id])
     @books = Book.all
     @users = User.all
   end

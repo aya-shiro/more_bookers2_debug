@@ -25,7 +25,6 @@
     　　　　</div>
 
 
-
           <% if @user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => '本当に消しますか？', class: "btn btn-sm btn-danger"%></td>
@@ -36,7 +35,7 @@
 
         <% @book.book_comments.each do |book_comment| %>
         <tr>
-          <td><%= link_to(@book.user) do %>
+          <td><%= link_to(book_comment.user) do %>
             <%= image_tag book_comment.user.get_profile_image(50, 50) %><br>
             <%= book_comment.user.name %>
             <% end %>
