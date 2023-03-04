@@ -42,12 +42,13 @@
             <% end %>
           </td>
           <td><%= book_comment.comment %></td>
-          <% if book_comment.user == current_user %></td>
-            <td><%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
-          <% end %>
+          <td>
+            <% if book_comment.user == current_user %>
+              <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
         <% end %>
         </tr>
-
       </table>
 
       <!--コメントフォームを非同期通信のためbook_comments/_comment.html.erbに移動-->
