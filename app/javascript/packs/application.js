@@ -11,8 +11,20 @@ import "jquery"
 import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
-import "../stylesheets/application" 
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// 応用課題7a、jquery呼び出しのため追記
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')
+
+// 応用課題7a、DWO参照して追記、するとBootstrapがなぜか崩れる…
+import Raty from "raty.js"
+window.raty = function(elem,opt) {
+  let raty =  new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
