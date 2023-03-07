@@ -7,7 +7,7 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
   # 評価を1－5までに制限するバリデーション↓
-  validates :star, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
+  # validates :star, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
 
   # いいねできるユーザーを1人に定める
   def favorited_by?(user)
@@ -28,5 +28,10 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+
+
+# 星評価
+  ratyrate_rateable "star"
+
 
 end
