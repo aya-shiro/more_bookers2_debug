@@ -15,13 +15,11 @@ import "../stylesheets/application"
 
 
 
-// 応用課題7a、jquery呼び出しのため追記
-require("jquery")
-
+// 応用課題7d、jquery呼び出しのため追記
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 
-// 応用課題7a、DWO参照して追記、するとBootstrapがなぜか崩れる…
+// 応用課題7d、DWO参照して追記、するとBootstrapがなぜか崩れる…
 import Raty from "raty.js"
 window.raty = function(elem,opt) {
   let raty =  new Raty(elem,opt)

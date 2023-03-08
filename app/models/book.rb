@@ -30,8 +30,4 @@ class Book < ApplicationRecord
   end
 
 
-# 星評価
-  ratyrate_rateable "star"
-
-
 end
