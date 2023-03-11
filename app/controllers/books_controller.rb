@@ -30,7 +30,14 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     # @book = Book(params[:id])
-    @books = Book.all
+
+    if params[:sort] == "star"  # 評価の高い順で並べる場合
+      puts params[:sort]
+      @books = Book.order(star: :desc)
+    else  # 新着順で並べる場合
+      @books = Book.order(created_at: :desc)
+    end
+
     @users = User.all
   end
 
