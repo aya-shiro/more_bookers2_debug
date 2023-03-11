@@ -21,7 +21,8 @@
         <td id="favorite-btn_<%= book.id %>">
           <%= render 'favorites/favorite-btn', book: book %>
 　　　　</td>
-
+　　　　<!--以下は7dサンプルコードから抜粋-->
+        <td><%= render "books/static_rate", book: book %></td>
 
         <td>コメント数：<%= book.book_comments.count %></td>
 
@@ -29,3 +30,8 @@
     <% end %>
   </tbody>
 </table>
+
+
+　　　　<!--以下は7dサンプルコードから抜粋---->
+        <!--# <td><= render "book_comments/counter", book: book ></td>-->
+

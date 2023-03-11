@@ -13,8 +13,6 @@ import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
 
-
-
 // 応用課題7d、jquery呼び出しのため追記
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
@@ -26,6 +24,9 @@ window.raty = function(elem,opt) {
   raty.init();
   return raty;
 }
+
+// .preventDefault();
+// import "bootstrap/dist/css/bootstrap.css"
 
 
 Rails.start()
