@@ -11,6 +11,11 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
 
+  <!--応用課題9dのため記述-->
+  <div class="form-group">
+    <%= f.label :tag_list, "カテゴリタグ" %>
+    <%= f.text_field :tag_list, class: "form-control" %>
+  </div>
 
   <% if book.id === nil %>
     <div class="form-group" id="star">

@@ -31,7 +31,11 @@ class BooksController < ApplicationController
     @book = Book.new
     # @book = Book(params[:id])
 
-    if params[:sort] == "star"  # 評価の高い順で並べる場合
+    # 応用課題9dのため記述
+    # categoryを受け取れたらcategory_listにcategoryを追加する
+    @book.category_list.add(params[:category]) if params[:category].present?
+
+    if params[:sort] == "star"  # 評価の高い順で並べる場合(応用課題8d)
       puts params[:sort]
       @books = Book.order(star: :desc)
     else  # 新着順で並べる場合
@@ -67,7 +71,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :star, :tags)
   end
 
 end
