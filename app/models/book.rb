@@ -28,7 +28,7 @@ class Book < ApplicationRecord
   end
 
   # 応用課題9dのため記述
-  acts_as_taggable_on :categories
-
+  acts_as_taggable_on :tags
+  attr_accessor :tag_list
 
 end

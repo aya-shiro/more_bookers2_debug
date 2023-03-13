@@ -31,12 +31,13 @@ class BooksController < ApplicationController
     @book = Book.new
     # @book = Book(params[:id])
 
-    # 応用課題9dのため記述
-    # categoryを受け取れたらcategory_listにcategoryを追加する
-    @book.category_list.add(params[:category]) if params[:category].present?
-
+    # 応用課題9dのため記述 categoryを受け取れたらcategory_listにcategoryを追加する
+    # タグが入力されている場合には、タグを追加
+    if params[:tag_list].present?
+      @book.tag_list.add(params[:book][:tag_list], parse: true)
+    end
+  
     if params[:sort] == "star"  # 評価の高い順で並べる場合(応用課題8d)
-      puts params[:sort]
       @books = Book.order(star: :desc)
     else  # 新着順で並べる場合
       @books = Book.order(created_at: :desc)
@@ -71,7 +72,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star, :tags)
+    params.require(:book).permit(:title, :body, :star, :name, :tag)
   end
 
 end

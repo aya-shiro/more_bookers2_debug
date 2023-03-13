@@ -26,15 +26,15 @@
     <div id="post_raty"></div>
     <script>
       $(document).on('turbolinks:load', function() {
-      let raty_elem = document.querySelector('#post_raty');
-      raty_elem.innerHTML = ""
-      let option = {
-          //星画像の指定などのオプションをここに記述,
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          starHalf: "<%= asset_path('star-half.png') %>",
-          scoreName: 'book[star]',   //bookモデルのstarカラムに保存
-        };
+       let raty_elem = document.querySelector('#post_raty');
+       raty_elem.innerHTML = ""
+       let option = {
+        //星画像の指定などのオプションをここに記述,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'book[star]',   //bookモデルのstarカラムに保存
+       };
       // ここでratyを初期化↓
       raty(raty_elem,option);
      });
